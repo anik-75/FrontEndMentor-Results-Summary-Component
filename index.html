@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+  <title>Frontend Mentor | Results summary component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    @font-face {
+      font-family: Hanken Grotesk;
+      src: url("./assets//fonts/HankenGrotesk-VariableFont_wght.ttf");
+    }
+
+    body,
+    * {
+      font-family: Hanken Grotesk;
+      box-sizing: border-box;
+    }
+
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="flex justify-center items-center w-screen h-screen">
+    <div class="h-[35rem] w-[50rem] flex shadow-2xl rounded-2xl">
+      <div
+        class="h-[35rem] w-1/2 rounded-3xl p-5 bg-gradient-to-b from-[hsl(252,100%,67%)] to-[hsl(241,81%,54%)] bg-[#3b27ec]">
+        <div class="text-center text-[hsl(241,100%,89%)] font-medium text-xl pt-9">
+          <p>Your Result</p>
+        </div>
+        <div
+          class="w-[13rem] h-[13rem] mx-auto mt-10 mb-8 text-center rounded-full bg-[hsla(256,72%,46%,1)] flex flex-col justify-center items-center">
+          <strong class="text-center font-extrabold text-7xl text-[hsl(0,0%,100%)]">76</strong>
+          <p class="text-[hsl(241,100%,89%)] text-base pt-1 font-medium">
+            of 100
+          </p>
+        </div>
+        <div>
+          <p class="text-center text-3xl text-[hsl(0,0%,100%)] my-3 font-extrabold">
+            Great
+          </p>
+          <p class="text-[hsl(241,100%,89%)] text-lg text-center font-medium">
+            You scored higher than 65% of the people who have taken these
+            tests.
+          </p>
+        </div>
+      </div>
+      <div class="ml-10 w-1/2">
+        <div class="pt-14 text-xl font-bold">
+          <h2>Summary</h2>
+        </div>
+        <div id="section-container" class="my-10 mr-10">
+          <section class="flex justify-between my-5 bg-[hsla(0,100%,67%,0.05)] p-3 text-lg font-bold rounded-lg">
+            <div class="flex">
+              <img src="./assets/images/icon-reaction.svg" class="m-1" />
+              <h3 class="text-[hsl(0,100%,67%)]">Reaction</h3>
+            </div>
+            <p>
+              <span class="text-[hsla(224,30%,27%,0.85)]">80</span>
+              <span class="text-[hsla(224,30%,27%,0.5)]">/ 100</span>
+            </p>
+          </section>
+          <section class="flex justify-between my-5 bg-[hsla(39,100%,56%,0.05)] p-3 text-lg font-bold rounded-lg">
+            <div class="flex">
+              <img src="./assets/images/icon-memory.svg" class="m-1" />
+              <h3 class="text-[hsl(39,100%,56%)]">Memory</h3>
+            </div>
+            <p>
+              <span class="text-[hsla(224,30%,27%,0.85)]">80</span>
+              <span class="text-[hsla(224,30%,27%,0.5)]">/ 100</span>
+            </p>
+          </section>
+          <section class="flex justify-between my-5 bg-[hsla(166,100%,37%,0.05)] p-3 text-lg font-bold rounded-lg">
+            <div class="flex">
+              <img src="./assets/images/icon-verbal.svg" class="m-1" />
+              <h3 class="text-[hsl(166,100%,37%)]">Verbal</h3>
+            </div>
+            <p>
+              <span class="text-[hsla(224,30%,27%,0.85)]">80</span>
+              <span class="text-[hsla(224,30%,27%,0.5)]">/ 100</span>
+            </p>
+          </section>
+          <section class="flex justify-between my-5 bg-[hsla(234,85%,45%,0.05)] p-3 text-lg font-bold rounded-lg">
+            <div class="flex">
+              <img src="./assets/images/icon-visual.svg" class="m-1" />
+              <h3 class="text-[hsl(234,85%,45%)]">Visual</h3>
+            </div>
+            <p>
+              <span class="text-[hsla(224,30%,27%,0.85)]">80</span>
+              <span class="text-[hsla(224,30%,27%,0.5)]">/ 100</span>
+            </p>
+          </section>
+        </div>
+        <div class="mr-10">
+          <button
+            class="w-full p-4 bg-[hsl(244,30%,27%)] text-[hsl(0,0%,100%)] rounded-full text-lg font-medium active:bg-[hsl(256,72%,46%)]">
+            Continue
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="attribution">
+    Challenge by
+    <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="#">Your
+      Name Here</a>.
+  </div>
+</body>
+
+<script type="module">
+  document.addEventListener("DOMContentLoaded", handleJson);
+  function handleJson() {
+    fetch("data.json")
+      .then((data) => data.json())
+      .then((json) => {
+        // console.log(json);
+
+        let sectionContainer = document.querySelector("#section-container");
+        for (let i = 0; i < json.length; i++) {
+          // console.log(json[i]);
+          // div
+          let div = sectionContainer.children[i].children[0];
+          let img = div.querySelector("img");
+          img.setAttribute("src", json[i]?.icon);
+          let title = div.querySelector("h3");
+          title.textContent = json[i]?.category;
+          // para
+          let para = sectionContainer.children[i].children[1];
+          let achievedScore = para.children[0];
+          achievedScore.textContent = json[i]?.score;
+        }
+      });
+  }
+</script>
+
+</html>
