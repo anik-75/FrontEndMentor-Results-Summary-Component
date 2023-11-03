@@ -49,15 +49,16 @@ To see how you can add code snippets, see below:
 ```
 
 ```css
-.proud-of-this-css {
-  color: papayawhip;
+@font-face {
+  font-family: Hanken Grotesk;
+  src: url("./assets//fonts/HankenGrotesk-VariableFont_wght.ttf");
 }
-```
 
-```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
+body,
+* {
+  font-family: Hanken Grotesk;
+  box-sizing: border-box;
+}
 ```
 
 If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
